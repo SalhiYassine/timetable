@@ -29,6 +29,16 @@ export const authUser = asyncHandler(async (req, res) => {
     throw new Error('Invalid email or password');
   }
 });
+// @desc    logout user
+// @route   POST /api/users/logout
+// @access  Private
+export const logout = asyncHandler(async (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV !== 'development',
+  });
+  res.json('Cookie cleared');
+});
 
 // @desc   register a new user
 // @route   POST /api/users

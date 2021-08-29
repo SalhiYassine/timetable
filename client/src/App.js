@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetails, login } from './actions/userAction';
+import { getDetails, login, logOut } from './actions/userAction';
 // Routing
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Custom Routing
@@ -16,7 +16,6 @@ const App = () => {
 
   useEffect(() => {
     if (loading) {
-      // dispatch(login('john@example.com', 'password'));
       dispatch(getDetails());
     }
   }, []);

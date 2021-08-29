@@ -98,6 +98,7 @@ export const getDetails = (id) => async (dispatch, getState) => {
 };
 
 export const logOut = () => async (dispatch) => {
+  await axios.get(`/api/users/logout`);
   dispatch({ type: USER_DETAILS_RESET });
   dispatch({ type: USER_LOGOUT });
 };
