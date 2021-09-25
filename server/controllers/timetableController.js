@@ -136,19 +136,19 @@ const fetchData = async (id, password) => {
   await page.type('[name=tUserName]', id);
   await page.type('[name="tPassword"]', password);
   await page.click('[type=submit]');
-  await page.waitForTimeout(350);
+  await page.waitForTimeout(1000);
   console.log('User Logged In');
   await page.click('a[id="LinkBtn_mystudentsettimetable"]');
-  await page.waitForTimeout(350);
+  await page.waitForTimeout(1000);
   await page.select('select[name="lbWeeks"]', '1');
-  await page.waitForTimeout(350);
+  await page.waitForTimeout(1000);
   await page.select(
     'select[name="dlType"]',
     'TextSpreadsheet;swsurl;SWSCUST Object TextSpreadsheet'
   );
-  await page.waitForTimeout(350);
+  await page.waitForTimeout(1000);
   await page.click('[type=submit]');
-  await page.waitForTimeout(200);
+  await page.waitForTimeout(1000);
   const year = [];
   for (let i = 0; i < 35; i++) {
     console.log(`Fetched Week: ${i}`);
@@ -158,7 +158,7 @@ const fetchData = async (id, password) => {
     }
     // const promise = page.waitForNavigation({ waitUntil: 'networkidle2' });
     await page.click('a[id="bNextWeek"]');
-    await page.waitForTimeout(150);
+    await page.waitForTimeout(500);
 
     // await promise;
   }
