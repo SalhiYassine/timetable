@@ -30,7 +30,7 @@ const PageRouter = () => {
         password: password,
       });
       if (res.status === 200) {
-        setUrl("http://localhost:5000/api/timetable/" + res.data);
+        setUrl("/api/timetable/" + res.data);
         setReady(true);
       }
     } catch (error) {
