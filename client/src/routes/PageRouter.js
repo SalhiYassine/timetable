@@ -35,6 +35,7 @@ const PageRouter = () => {
       }
     } catch (error) {
       setError(true);
+
       setDisabled(false);
     }
   };
