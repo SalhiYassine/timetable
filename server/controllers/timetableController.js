@@ -136,10 +136,10 @@ const fetchData = async (id, password) => {
   await page.type('[name=tUserName]', id);
   await page.type('[name="tPassword"]', password);
   await page.click('[type=submit]');
-  await page.waitForTimeout(200);
+  await page.waitForTimeout(1000);
   console.log('User Logged In');
   await page.click('a[id="LinkBtn_mystudentsettimetable"]');
-  await page.waitForTimeout(200);
+  await page.waitForTimeout(500);
   await page.select('select[name="lbWeeks"]', '1');
   await page.waitForTimeout(200);
   await page.select(
@@ -148,7 +148,7 @@ const fetchData = async (id, password) => {
   );
   await page.waitForTimeout(200);
   await page.click('[type=submit]');
-  await page.waitForTimeout(200);
+  await page.waitForTimeout(500);
   const year = [];
   for (let i = 0; i < 35; i++) {
     console.log(`Fetched Week: ${i}`);
