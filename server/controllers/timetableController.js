@@ -23,7 +23,7 @@ export const createUserTimeTable = asyncHandler(async (req, res) => {
     }
   } catch (error) {
     res.status(400);
-    throw new Error('Invalid Credentials or server timeout');
+    throw new Error(`Invalid Credentials or server timeout ${error}`);
   }
 });
 // @desc   get .ical link timetable
