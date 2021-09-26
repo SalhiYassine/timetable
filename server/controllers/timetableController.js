@@ -131,15 +131,28 @@ const fetchData = async (id, password) => {
 
   const page = await browser.newPage();
   page.setDefaultNavigationTimeout(0);
+  await page.setViewport({ width: 1920, height: 1080 });
+  await page.setRequestInterception(true);
+  page.on('request', (req) => {
+    if (
+      req.resourceType() === 'stylesheet' ||
+      req.resourceType() === 'font' ||
+      req.resourceType() === 'image'
+    ) {
+      req.abort();
+    } else {
+      req.continue();
+    }
+  });
   await page.goto('https://teaching.brunel.ac.uk/teaching/SWS-2122/login.aspx');
-
+  await page.waitForTimeout(400);
   await page.type('[name=tUserName]', id);
   await page.type('[name="tPassword"]', password);
   await page.click('[type=submit]');
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(500);
   console.log('User Logged In');
   await page.click('a[id="LinkBtn_mystudentsettimetable"]');
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(300);
   await page.select('select[name="lbWeeks"]', '1');
 
   await page.waitForTimeout(200);
@@ -149,7 +162,7 @@ const fetchData = async (id, password) => {
   );
   await page.waitForTimeout(200);
   await page.click('[type=submit]');
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(300);
   const year = [];
   for (let i = 0; i < 35; i++) {
     console.log(`Fetched Week: ${i}`);
