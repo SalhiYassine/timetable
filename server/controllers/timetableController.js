@@ -141,6 +141,7 @@ const fetchData = async (id, password) => {
   await page.click('a[id="LinkBtn_mystudentsettimetable"]');
   await page.waitForTimeout(500);
   await page.select('select[name="lbWeeks"]', '1');
+
   await page.waitForTimeout(200);
   await page.select(
     'select[name="dlType"]',
